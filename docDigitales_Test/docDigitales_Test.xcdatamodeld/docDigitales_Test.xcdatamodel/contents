@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Branch" representedClassName=".BranchMO" syncable="YES" codeGenerationType="category">
+        <attribute name="branchName" attributeType="String" syncable="YES"/>
+        <attribute name="city" attributeType="String" syncable="YES"/>
+        <attribute name="country" attributeType="String" syncable="YES"/>
+        <attribute name="extNumber" attributeType="String" syncable="YES"/>
+        <attribute name="postalCode" attributeType="String" syncable="YES"/>
+        <attribute name="streetName" attributeType="String" syncable="YES"/>
+        <attribute name="suburbName" attributeType="String" syncable="YES"/>
+        <relationship name="admin" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="branches" inverseEntity="User" syncable="YES"/>
+        <relationship name="employees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Employee" inverseName="branch" inverseEntity="Employee" syncable="YES"/>
+    </entity>
+    <entity name="Employee" representedClassName="EmployeeMO" parentEntity="Person" syncable="YES" codeGenerationType="class">
+        <attribute name="position" attributeType="String" syncable="YES"/>
+        <relationship name="branch" maxCount="1" deletionRule="Nullify" destinationEntity="Branch" inverseName="employees" inverseEntity="Branch" syncable="YES"/>
+    </entity>
+    <entity name="Person" representedClassName="PersonMO" isAbstract="YES" syncable="YES" codeGenerationType="category">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="rfc" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="UserMO" parentEntity="Person" syncable="YES" codeGenerationType="class">
+        <attribute name="companyName" attributeType="String" syncable="YES"/>
+        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="password" attributeType="String" syncable="YES"/>
+        <relationship name="branches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Branch" inverseName="admin" inverseEntity="Branch" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="User" positionX="-326.33984375" positionY="-227.2109375" width="128" height="103"/>
+        <element name="Branch" positionX="-139.60546875" positionY="-225.5234375" width="128" height="178"/>
+        <element name="Employee" positionX="39.76953125" positionY="-200.84765625" width="128" height="73"/>
+        <element name="Person" positionX="-135.90234375" positionY="-451.1484375" width="128" height="73"/>
+    </elements>
+</model>
